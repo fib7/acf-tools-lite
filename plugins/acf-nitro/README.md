@@ -140,8 +140,6 @@ The plugin uses a SessionStart hook to inject parallel execution enforcement ins
 
 ## Token Cost
 
-⚠️ **~2,000-2,500 tokens per session**
-
 This mode adds enforcement instructions to your context. Best practices:
 
 - Enable for development sessions where performance matters

@@ -132,13 +132,12 @@ MIT License - see [LICENSE](LICENSE) file
 
 ## Contributing
 
-This is a minimal distribution repository. For pattern extraction and full ACF toolkit development, see [acf-tools](https://github.com/fib7/acf-tools).
+This is a minimal distribution repository. For full ACF toolkit development reach out at https://fib7.ai.
 
 ---
 
 ## Related Projects
 
-- **[acf-tools](https://github.com/fib7/acf-tools)** - Complete ACF reference toolkit with agents, commands, patterns
 - **[Claude Code](https://claude.ai/code)** - AI-assisted development CLI
 
 ---

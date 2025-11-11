@@ -1,8 +1,8 @@
 {
-  "name": "ACF - Agentic Continuous Flow Claude Code Plugins Lite",
+  "name": "acf-tools-lite",
   "description": "Claude Code plugins enforcing ACF quality patterns - validate logic consistency and optimize parallel execution across agent workflows",
   "owner": {
-    "name": "ACF Project",
+    "name": "ACF Tools Lite",
     "email": "acf@fib7.ai"
   },
   "plugins": [

@@ -82,8 +82,6 @@ The plugin uses a SessionStart hook to inject hostile logic enforcement instruct
 
 ## Token Cost
 
-⚠️ **~2,000-2,500 tokens per session**
-
 This cognitive mode adds significant instructions to your context. Best practices:
 
 - Enable ONLY for validation tasks
@@ -188,8 +186,8 @@ See [Contributing Guide](../../CONTRIBUTING.md) for how to propose improvements 
 
 ## Support
 
-- Issues: [GitHub Issues](https://github.com/yourusername/acf-tools/issues)
-- Discussions: [GitHub Discussions](https://github.com/yourusername/acf-tools/discussions)
+- Issues: [GitHub Issues](https://github.com/fib7/acf-tools-lite/issues)
+- Discussions: [GitHub Discussions](https://github.com/fib7/acf-tools-lite/discussions)
 
 ---
 
