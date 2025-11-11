@@ -1,0 +1,48 @@
+{
+  "name": "ACF - Agentic Continuous Flow Claude Code Plugins Lite",
+  "description": "Claude Code plugins enforcing ACF quality patterns - validate logic consistency and optimize parallel execution across agent workflows",
+  "owner": {
+    "name": "ACF Project",
+    "email": "acf@fib7.ai"
+  },
+  "plugins": [
+    {
+      "name": "acf-challenger-mode",
+      "description": "Reasoning validation mode - Intellectually aggressive challenger who attacks every gap in logic and consistency. Perfect for requirements clarification, architecture review, and agent output validation.",
+      "version": "1.0.0",
+      "author": {
+        "name": "ACF Project",
+        "email": "acf@fib7.ai"
+      },
+      "source": "./plugins/acf-challenger-mode",
+      "category": "productivity",
+      "keywords": [
+        "cognitive-mode",
+        "validation",
+        "reasoning",
+        "challenger",
+        "acf",
+        "logic-validation"
+      ]
+    },
+    {
+      "name": "acf-nitro",
+      "description": "Parallel execution enforcement mode - Enthusiastic speed demon who catches sequential execution violations and calculates time waste. Enforces TodoWrite batching, parallel Task spawning, and parallel tool calls.",
+      "version": "1.0.0",
+      "author": {
+        "name": "ACF Project",
+        "email": "acf@fib7.ai"
+      },
+      "source": "./plugins/acf-nitro",
+      "category": "productivity",
+      "tags": [
+        "performance",
+        "parallel-execution",
+        "enforcement",
+        "speed-optimization",
+        "acf",
+        "nitro"
+      ]
+    }
+  ]
+}

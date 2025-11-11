@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Logs
+*.log
+logs/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+.cache/
+tmp/
+
+# Node modules (if any JS tools used)
+node_modules/
+
+# Claude Code local settings (keep settings.local.json in)
+.claude/sessions/
+.claude/logs/
+.claude/settings.local.json
