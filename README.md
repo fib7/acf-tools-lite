@@ -8,12 +8,12 @@
 
 ## What is ACF Tools Lite?
 
-Minimal cognitive enforcement toolkit for [Claude Code](https://claude.ai/code) - two essential plugins that enforce ACF quality patterns in your AI-assisted development workflow.
+Minimal cognitive enforcement toolkit for [Claude Code](https://claude.ai/code) - three essential plugins that enforce ACF quality patterns in your AI-assisted development workflow.
 
 ### Plugins
 
-**🔥 acf-challenger-mode** - Hostile logic enforcement
-Intellectually aggressive challenger who attacks every gap in reasoning, logic, and consistency. Zero tolerance for sloppy thinking. Perfect for:
+**🔥 acf-challenger-mode** - Rigorous logic validation
+Systematic reasoning validator who enforces completeness, consistency, and coherence. Zero tolerance for incomplete specifications. Perfect for:
 - Requirements clarification
 - Architecture review
 - Agent output validation
@@ -25,6 +25,13 @@ Enthusiastic speed demon who catches sequential execution violations and calcula
 - Parallel Task agent spawning
 - Parallel tool calls (Read, Grep, Bash)
 - Performance optimization
+
+**⚙️ acf-power-commit** - Conventional commit enforcement
+Creates atomic, convention-compliant git commits with explicit file staging. Zero tolerance for sloppy git habits. Perfect for:
+- Conventional commit format enforcement
+- Atomic commit discipline
+- Explicit file staging (no `git add -A`)
+- Project-specific git conventions
 
 ---
 
@@ -42,9 +49,10 @@ Enthusiastic speed demon who catches sequential execution violations and calcula
 
 **2. Install plugins**
 ```bash
-# Install both
+# Install all three
 /plugin install acf-challenger-mode@acf-tools-lite
 /plugin install acf-nitro@acf-tools-lite
+/plugin install acf-power-commit@acf-tools-lite
 ```
 
 **3. Enable when needed**
@@ -54,6 +62,8 @@ Enthusiastic speed demon who catches sequential execution violations and calcula
 
 # Enable Nitro mode for parallel execution enforcement
 /plugin enable acf-nitro
+
+# Power Commit is always active (SessionStart hook + /commit command)
 
 # Disable when done
 /plugin disable acf-challenger-mode
@@ -76,6 +86,12 @@ Enthusiastic speed demon who catches sequential execution violations and calcula
 - **File operations**: Catch sequential Read/Grep/Bash calls that could run parallel
 - **Performance optimization**: Calculate time waste from sequential patterns
 
+### When to use Power Commit
+- **Creating commits**: Use `/commit` command for automatic conventional commits
+- **Enforcing standards**: SessionStart hook loads project-specific conventions
+- **Custom conventions**: Edit `docs/acf/git/commit-conventions.md` in your project
+- **Quality discipline**: Prevents `git add -A`, enforces atomic commits
+
 ---
 
 ## Documentation
@@ -93,8 +109,9 @@ acf-tools-lite/
 ├── .claude-plugin/
 │   └── marketplace.json        # Plugin marketplace metadata
 ├── plugins/
-│   ├── acf-challenger-mode/    # Hostile logic enforcement plugin
-│   └── acf-nitro/              # Parallel execution enforcement plugin
+│   ├── acf-challenger-mode/    # Rigorous logic validation plugin
+│   ├── acf-nitro/              # Parallel execution enforcement plugin
+│   └── acf-power-commit/       # Conventional commit enforcement plugin
 ├── docs/                       # Documentation
 └── README.md                   # This file
 ```
@@ -118,9 +135,9 @@ acf-tools-lite/
 
 ## Version
 
-**Current**: v1.0.0
+**Current**: v1.1.0
 
-Both plugins are stable and production-ready.
+All three plugins are stable and production-ready.
 
 ---
 

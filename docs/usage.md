@@ -10,6 +10,7 @@ Comprehensive patterns and examples for ACF Tools Lite plugins.
 |--------|--------|----------|---------|
 | **acf-challenger-mode** | `/plugin enable acf-challenger-mode` | Logic validation, requirements clarification | `/plugin disable acf-challenger-mode` |
 | **acf-nitro** | `/plugin enable acf-nitro` | Parallel execution enforcement | `/plugin disable acf-nitro` |
+| **acf-power-commit** | Always enabled (SessionStart hook) | Conventional commits via `/commit` | `/plugin uninstall acf-power-commit` |
 
 ---
 
@@ -326,16 +327,196 @@ Claude: [Makes 3 Read calls in one message]
 
 ---
 
+## acf-power-commit Usage
+
+### Purpose
+Conventional commit enforcement - creates atomic, convention-compliant git commits with explicit file staging.
+
+### When to Use
+
+**Creating Commits**:
+- After completing implementation work
+- When ready to commit changes
+- Need conventional commit format
+- Want atomic commits per logical change
+
+**Enforcing Standards**:
+- Project has git commit conventions
+- Team requires consistent commit messages
+- Need explicit file staging discipline
+- Want to prevent `git add -A`
+
+---
+
+### Example Workflows
+
+#### Workflow 1: Basic Commit Creation
+
+**Context**: Completed feature implementation, ready to commit
+
+**Steps**:
+```bash
+# Make changes to your code
+# ...
+
+# Create commits using /commit command
+/commit
+
+# Power Commit analyzes changes
+# Output: "Done. Created 3 commits:"
+# | Hash    | Type | Scope | Subject                          |
+# | abc123  | feat | api   | add user authentication endpoint |
+# | def456  | test | api   | add auth endpoint tests          |
+# | ghi789  | docs | api   | update API documentation         |
+```
+
+**Outcome**: Three atomic commits, each following conventional format, explicitly staged.
+
+---
+
+#### Workflow 2: Custom Project Conventions
+
+**Context**: Project has specific commit conventions
+
+**Steps**:
+```bash
+# 1. Edit project conventions
+vim docs/acf/git/commit-conventions.md
+
+# 2. Customize:
+# - Allowed commit types
+# - Scope rules
+# - Subject format
+# - Staging rules
+
+# 3. Reload session
+/clear
+
+# 4. Create commits (now uses custom conventions)
+/commit
+
+# Power Commit uses your custom conventions
+# Enforces project-specific rules
+```
+
+**Outcome**: Commits follow project-specific conventions, not just defaults.
+
+---
+
+#### Workflow 3: Multi-Scope Changes
+
+**Context**: Changes span multiple areas
+
+**Steps**:
+```bash
+# Modified files:
+# - src/api/auth.ts (new feature)
+# - src/api/auth.test.ts (tests)
+# - docs/api.md (documentation)
+# - README.md (readme update)
+
+/commit
+
+# Power Commit groups by scope:
+# Commit 1: feat(api): add user authentication
+#   - src/api/auth.ts
+# Commit 2: test(api): add auth tests
+#   - src/api/auth.test.ts
+# Commit 3: docs(api): update API documentation
+#   - docs/api.md
+# Commit 4: docs: update README with auth instructions
+#   - README.md
+```
+
+**Outcome**: Four atomic commits, each focused on single logical change.
+
+---
+
+### Best Practices
+
+**DO**:
+- ✅ Use `/commit` for all commits (enforces conventions)
+- ✅ Customize conventions in `docs/acf/git/commit-conventions.md`
+- ✅ Reload session (`/clear`) after editing conventions
+- ✅ Let Power Commit group changes by scope
+
+**DON'T**:
+- ❌ Manually run `git add -A` (Power Commit prevents this)
+- ❌ Create commits outside `/commit` (bypasses enforcement)
+- ❌ Mix unrelated changes in one commit (atomic commits required)
+- ❌ Edit conventions without reloading session
+
+---
+
+### Commit Message Format
+
+Power Commit enforces this format:
+
+```
+<type>(<scope>): <subject>
+
+[optional body]
+```
+
+**Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`
+
+**Subject rules**:
+- Imperative mood ("add feature" not "added feature")
+- No capitalization
+- No period at end
+- Max 50 characters
+
+**Example commits**:
+```
+feat(api): add user authentication endpoint
+fix(auth): resolve token expiration bug
+docs: update installation guide
+test(api): add integration tests for auth flow
+refactor(db): extract query builder to separate module
+```
+
+---
+
+### Conventions File
+
+**Location**: `docs/acf/git/commit-conventions.md`
+
+**Behavior**:
+- Created from template on first session (if missing)
+- Loaded via SessionStart hook every session
+- Customizable per project
+- Reload with `/clear` after editing
+
+**Customization example**:
+```markdown
+## Commit Message Format
+
+<type>(<scope>): <subject>
+
+**Types**: feat, fix, docs, refactor, test, chore, breaking
+
+**Scopes**: api, ui, db, auth, deploy
+
+**Subject**: Max 72 chars, imperative mood
+```
+
+---
+
 ## Combined Usage
 
-### When to Use Both Plugins
+### When to Use Multiple Plugins
 
-**Never simultaneously** - they serve different purposes and can conflict:
-- Challenger is hostile, Nitro is enthusiastic
-- Challenger validates logic, Nitro optimizes execution
-- Different cognitive modes don't mix well
+**Cognitive plugins (Challenger, Nitro): Never simultaneously**
+- Challenger and Nitro have different personalities (rigorous vs enthusiastic)
+- Different enforcement modes can conflict
+- Use sequentially, not together
 
-**Sequential usage pattern**:
+**Power Commit: Always active**
+- SessionStart hook loads conventions automatically
+- `/commit` command available anytime
+- Compatible with all other plugins
+
+**Recommended workflow**:
 ```bash
 # Phase 1: Validate requirements (Challenger)
 /plugin enable acf-challenger-mode
@@ -347,8 +528,12 @@ Claude: [Makes 3 Read calls in one message]
 # ... task planning with parallel optimization ...
 /plugin disable acf-nitro
 
-# Phase 3: Implement (no plugins)
+# Phase 3: Implement (no cognitive plugins)
 # ... actual coding work ...
+
+# Phase 4: Commit (Power Commit always active)
+/commit
+# ... creates conventional commits ...
 ```
 
 ---
@@ -418,9 +603,9 @@ Claude: [Spawns 3 Task research agents in parallel]
 
 ---
 
-### Pattern 3: Architecture Review → Task Planning
+### Pattern 3: Architecture Review → Task Planning → Commit
 
-**Challenger then Nitro**:
+**Challenger → Nitro → Power Commit**:
 ```bash
 # Step 1: Validate architecture (Challenger)
 /plugin enable acf-challenger-mode
@@ -435,8 +620,38 @@ User: "Break this architecture into tasks"
 Claude: [Creates TodoWrite with all tasks batched]
 /plugin disable acf-nitro
 
-# Step 3: Implement (no plugins)
+# Step 3: Implement (no cognitive plugins)
 # ... coding work ...
+
+# Step 4: Commit changes (Power Commit)
+/commit
+Claude: [Creates atomic conventional commits]
+# Done. Created 5 commits with proper types and scopes
+```
+
+---
+
+### Pattern 4: Customized Conventions Per Project
+
+**Project-specific git standards**:
+```bash
+# Setup phase (once per project)
+# 1. Install Power Commit
+/plugin install acf-power-commit@acf-tools-lite
+
+# 2. Customize conventions for project
+vim docs/acf/git/commit-conventions.md
+# - Define allowed types (feat, fix, breaking, etc.)
+# - Define scopes (api, ui, db, etc.)
+# - Set subject rules (length, format)
+# - Document staging rules
+
+# 3. Reload to activate
+/clear
+
+# Usage (every commit)
+/commit
+# Uses your custom conventions automatically
 ```
 
 ---
@@ -465,12 +680,33 @@ Claude: [Creates TodoWrite with all tasks batched]
 
 ### Plugin Conflict
 
-**Problem**: Both plugins enabled, confusing output
+**Problem**: Both cognitive plugins (Challenger + Nitro) enabled, confusing output
 
 **Solution**:
 - **Never enable both simultaneously**
 - Use sequential pattern (Challenger first, then Nitro)
 - Disable one before enabling the other
+- Power Commit is compatible with all plugins
+
+### Power Commit Convention Not Loading
+
+**Problem**: Changes to `docs/acf/git/commit-conventions.md` not applied
+
+**Solution**:
+- Reload session after editing: `/clear`
+- Verify file location: `docs/acf/git/commit-conventions.md`
+- Check file syntax (valid markdown)
+- Verify conventions are in markdown format, not code blocks
+
+### Power Commit Creates Wrong Commit Type
+
+**Problem**: Commit type doesn't match change (e.g., "docs" instead of "feat")
+
+**Solution**:
+- Power Commit infers type from file changes
+- If wrong, provide explicit scope in conversation: "This is a feature change"
+- Customize type mappings in `docs/acf/git/commit-conventions.md`
+- Review commit before push, amend if needed
 
 ---
 
@@ -490,6 +726,15 @@ With Nitro active, think "what else could run in parallel?" - file reads, agent 
 
 ### Tip 5: Iterate Until Silent
 Keep iterating with Challenger until it has no more objections - that's when requirements are solid.
+
+### Tip 6: Customize Conventions Early
+Set up `docs/acf/git/commit-conventions.md` at project start - prevents inconsistent commits later.
+
+### Tip 7: Use Power Commit for All Commits
+Always use `/commit` instead of manual git commands - ensures convention compliance.
+
+### Tip 8: Review Generated Commits
+Power Commit creates commits automatically, but review with `git log` before pushing.
 
 ---
 

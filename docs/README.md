@@ -11,8 +11,9 @@ Complete documentation for ACF cognitive enforcement plugins.
 - **[Usage Guide](usage.md)** - Patterns, examples, best practices
 
 ### Plugin Documentation
-- **[acf-challenger-mode](../plugins/acf-challenger-mode/README.md)** - Hostile logic enforcement
+- **[acf-challenger-mode](../plugins/acf-challenger-mode/README.md)** - Rigorous logic validation
 - **[acf-nitro](../plugins/acf-nitro/README.md)** - Parallel execution enforcement
+- **[acf-power-commit](../plugins/acf-power-commit/README.md)** - Conventional commit enforcement
 
 ### Repository
 - **[Main README](../README.md)** - Repository overview
@@ -34,7 +35,7 @@ docs/
 ## Plugin Overview
 
 ### acf-challenger-mode
-**Purpose**: Hostile logic enforcement - validates reasoning consistency
+**Purpose**: Rigorous logic validation - validates reasoning consistency
 
 **Use cases**:
 - Requirements clarification
@@ -42,7 +43,7 @@ docs/
 - Agent output validation
 - Logic gap detection
 
-**Behavior**: Intellectually aggressive challenger attacks every gap in logic, consistency, and reasoning. Binary outcomes, zero tolerance for sloppy thinking.
+**Behavior**: Systematic reasoning validator enforces completeness, consistency, and coherence. Binary outcomes, zero tolerance for incomplete specifications.
 
 ---
 
@@ -56,6 +57,19 @@ docs/
 - Performance optimization
 
 **Behavior**: Enthusiastic speed demon catches sequential violations, calculates time waste, enforces parallel patterns.
+
+---
+
+### acf-power-commit
+**Purpose**: Conventional commit enforcement - atomic, convention-compliant commits
+
+**Use cases**:
+- Creating conventional commits via `/commit` command
+- Loading project-specific git conventions
+- Enforcing explicit file staging (no `git add -A`)
+- Ensuring atomic commit discipline
+
+**Behavior**: SessionStart hook loads conventions from `docs/acf/git/commit-conventions.md` (creates from template if missing). `/commit` command enforces conventional format and explicit staging.
 
 ---
 

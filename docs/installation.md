@@ -37,14 +37,17 @@ This clones the marketplace repository locally and makes plugins available for i
 
 **Step 2: Install Plugins**
 ```bash
-# Install both plugins
+# Install all three plugins
 /plugin install acf-challenger-mode@acf-tools-lite
 /plugin install acf-nitro@acf-tools-lite
+/plugin install acf-power-commit@acf-tools-lite
 
 # Or install individually
 /plugin install acf-challenger-mode@acf-tools-lite
 # Then later...
 /plugin install acf-nitro@acf-tools-lite
+# And...
+/plugin install acf-power-commit@acf-tools-lite
 ```
 
 **Step 3: Verify Installation**
@@ -56,6 +59,7 @@ You should see:
 ```
 acf-challenger-mode (acf-tools-lite) - disabled
 acf-nitro (acf-tools-lite) - disabled
+acf-power-commit (acf-tools-lite) - enabled
 ```
 
 ---
@@ -74,6 +78,7 @@ git clone git@github.com:fib7/acf-tools-lite.git ~/acf-tools-lite
 /plugin marketplace add ~/acf-tools-lite
 /plugin install acf-challenger-mode@acf-tools-lite
 /plugin install acf-nitro@acf-tools-lite
+/plugin install acf-power-commit@acf-tools-lite
 ```
 
 ---
@@ -107,6 +112,7 @@ git clone git@github.com:fib7/acf-tools-lite.git ~/acf-tools-lite
 ```bash
 /plugin update acf-challenger-mode
 /plugin update acf-nitro
+/plugin update acf-power-commit
 ```
 
 **Update all plugins**:
@@ -121,6 +127,8 @@ git clone git@github.com:fib7/acf-tools-lite.git ~/acf-tools-lite
 /plugin uninstall acf-challenger-mode
 # or
 /plugin uninstall acf-nitro
+# or
+/plugin uninstall acf-power-commit
 ```
 
 **Remove marketplace**:
@@ -177,6 +185,30 @@ User: "Create 5 tasks sequentially"
 ```bash
 /plugin disable acf-nitro
 ```
+
+---
+
+### Test Power Commit
+
+**1. Power Commit is always enabled** (SessionStart hook)
+
+**2. Test `/commit` command**:
+```bash
+/commit
+```
+
+**Expected behavior**: Claude analyzes changes, creates conventional commits:
+- "Done. Created 2 commits:"
+- Follows conventional commit format
+- Explicitly stages files (never `git add -A`)
+- Atomic commits per logical change
+
+**3. Check conventions file**:
+```bash
+cat docs/acf/git/commit-conventions.md
+```
+
+If file doesn't exist, it's created from template on first session.
 
 ---
 
@@ -275,7 +307,9 @@ After installation:
 2. Review plugin READMEs for detailed behavior:
    - [acf-challenger-mode README](../plugins/acf-challenger-mode/README.md)
    - [acf-nitro README](../plugins/acf-nitro/README.md)
-3. Enable plugins when needed, disable when done
+   - [acf-power-commit README](../plugins/acf-power-commit/README.md)
+3. Enable cognitive plugins (challenger, nitro) when needed, disable when done
+4. Use `/commit` command for power-commit (always active)
 
 ---
 

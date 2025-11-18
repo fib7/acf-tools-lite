@@ -10,7 +10,7 @@
 
 **What acf-tools-lite IS**:
 - Lightweight plugin distribution for Claude Code
-- Two cognitive enforcement plugins: Challenger (logic validation) + Nitro (parallel execution)
+- Three quality enforcement plugins: Challenger (logic validation) + Nitro (parallel execution) + Power Commit (git conventions)
 - Minimal, focused, production-ready
 - Zero dependencies (bash-only hooks)
 
@@ -30,7 +30,7 @@ acf-tools-lite/
 ├── .claude-plugin/
 │   └── marketplace.json          # Plugin marketplace metadata
 ├── plugins/
-│   ├── acf-challenger-mode/      # Hostile logic enforcement
+│   ├── acf-challenger-mode/      # Rigorous logic validation
 │   │   ├── .claude-plugin/
 │   │   │   └── plugin.json       # Plugin metadata
 │   │   ├── content/
@@ -41,11 +41,24 @@ acf-tools-lite/
 │   │   │       └── session-start.sh  # Bash hook handler
 │   │   ├── LICENSE
 │   │   └── README.md
-│   └── acf-nitro/                # Parallel execution enforcement
+│   ├── acf-nitro/                # Parallel execution enforcement
+│   │   ├── .claude-plugin/
+│   │   │   └── plugin.json
+│   │   ├── content/
+│   │   │   └── parallel-enforcement.md
+│   │   ├── hooks/
+│   │   │   ├── hooks.json
+│   │   │   └── handlers/
+│   │   │       └── session-start.sh
+│   │   ├── LICENSE
+│   │   └── README.md
+│   └── acf-power-commit/         # Conventional commit enforcement
 │       ├── .claude-plugin/
 │       │   └── plugin.json
+│       ├── commands/
+│       │   └── commit.md         # /commit command
 │       ├── content/
-│       │   └── parallel-enforcement.md
+│       │   └── commit-conventions-template.md
 │       ├── hooks/
 │       │   ├── hooks.json
 │       │   └── handlers/
@@ -108,6 +121,7 @@ acf-tools-lite/
 
 - `challenger` - acf-challenger-mode plugin
 - `nitro` - acf-nitro plugin
+- `power-commit` - acf-power-commit plugin
 - `marketplace` - Marketplace configuration
 - `docs` - Documentation
 
@@ -210,8 +224,8 @@ chore(marketplace): bump plugins to v1.1.0
 | Aspect | acf-tools (Full) | acf-tools-lite |
 |--------|------------------|----------------|
 | Purpose | Reference patterns, agents, commands | Plugin distribution |
-| Size | 168 files, 1.2MB | 18 files, ~100KB |
-| Plugins | 8 plugins | 2 plugins |
+| Size | 168 files, 1.2MB | ~25 files, ~120KB |
+| Plugins | 8 plugins | 3 plugins |
 | Workflow | Pattern extraction | Plugin maintenance |
 | Target | ACF implementers | Plugin users |
 
