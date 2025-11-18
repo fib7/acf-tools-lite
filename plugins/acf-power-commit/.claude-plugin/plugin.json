@@ -1,0 +1,12 @@
+{
+  "name": "acf-power-commit",
+  "version": "1.0.0",
+  "description": "Conventional commit enforcer - Creates atomic, convention-compliant git commits with explicit file staging. Zero tolerance for git add -A.",
+  "author": {
+    "name": "ACF Project",
+    "email": "acf@fib7.ai"
+  },
+  "license": "MIT",
+  "keywords": ["git", "commit", "conventional-commits", "acf", "quality"],
+  "commands": "./commands/"
+}
