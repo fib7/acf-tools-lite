@@ -36,3 +36,4 @@ node_modules/
 .claude/sessions/
 .claude/logs/
 .claude/settings.local.json
+.claude
