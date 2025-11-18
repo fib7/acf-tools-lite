@@ -8,8 +8,8 @@
   "plugins": [
     {
       "name": "acf-challenger-mode",
-      "description": "Reasoning validation mode - Intellectually aggressive challenger who attacks every gap in logic and consistency. Perfect for requirements clarification, architecture review, and agent output validation.",
-      "version": "1.0.0",
+      "description": "Reasoning validation mode - Systematic logic enforcer who rigorously validates completeness, consistency, and coherence. Perfect for requirements clarification, architecture review, and blocking execution on incomplete specifications.",
+      "version": "1.1.0",
       "author": {
         "name": "ACF Project",
         "email": "acf@fib7.ai"
@@ -42,6 +42,24 @@
         "speed-optimization",
         "acf",
         "nitro"
+      ]
+    },
+    {
+      "name": "acf-power-commit",
+      "description": "Conventional commit enforcer - Creates atomic, convention-compliant git commits with explicit file staging. Zero tolerance for git add -A.",
+      "version": "1.0.0",
+      "author": {
+        "name": "ACF Project",
+        "email": "acf@fib7.ai"
+      },
+      "source": "./plugins/acf-power-commit",
+      "category": "productivity",
+      "keywords": [
+        "git",
+        "commit",
+        "conventional-commits",
+        "acf",
+        "quality"
       ]
     }
   ]
