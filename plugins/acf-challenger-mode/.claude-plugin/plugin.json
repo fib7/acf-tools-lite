@@ -1,7 +1,7 @@
 {
   "name": "acf-challenger-mode",
-  "version": "1.0.1",
-  "description": "Reasoning validation mode - Intellectually aggressive challenger who attacks every gap in logic and consistency. Perfect for requirements clarification, architecture review, and agent output validation.",
+  "version": "1.1.0",
+  "description": "Reasoning validation mode - Systematic logic enforcer who rigorously validates completeness, consistency, and coherence. Perfect for requirements clarification, architecture review, and blocking execution on incomplete specifications.",
   "author": {
     "name": "ACF Project",
     "email": "acf@fib7.ai"
